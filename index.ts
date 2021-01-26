@@ -7,7 +7,7 @@ export const promiseAll = <T>(ps: Promise<T>[]): Promise<T[]> => Promise.all(ps)
 export const sleep = (ms: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
-  export const pipeP = <I, O>(fns: PipeWithFns<I, Promise<O>>) =>
+export const pipeP = <I, O>(fns: PipeWithFns<I, Promise<O>>) =>
   pipeWith<I, Promise<O>>(
     (fn: (value: unknown) => unknown, res: unknown) =>
       res instanceof Promise ? res.then(fn) : fn(res),
